@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>M4 Competitiion Tee | CarTees</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/product.css">
+  <style>
+    /* Price styling */
+    .price {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+    .price .old-price {
+      text-decoration: line-through;
+      color: green;
+      margin-right: 10px;
+    }
+    .price .new-price {
+      color: green;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    .price .savings {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Custom Cart Modal -->
+  <div id="cartModal" class="cart-modal">
+    <div class="cart-modal-content">
+      <p id="cartModalMessage"></p>
+      <div class="cart-modal-buttons">
+        <button id="viewCartBtn" onclick="window.location.href='cart.html'">View Cart</button>
+        <button id="continueShoppingBtn" onclick="window.location.href='index.html'">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo"><a href="index.html">Car<span>Tees</span></a></div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop All</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <div class="icons">
+      <!-- Cart -->
+      <div class="cart-icon" onclick="window.location.href='cart.html'">
+        🛒
+        <span id="cart-indicator"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Product Section -->
+  <main class="product-page">
+    <div class="product-container">
+      
+      <!-- Product Images -->
+      <div class="product-image">
+        <img id="mainImage" src="images/M4 CompetitionBack.png" alt="M4 Competition Tee">
+
+        <!-- Thumbnails -->
+        <div class="thumbnails">
+          <img src="images/M4 CompetitionFront.png" alt="Front view" onclick="changeImage('images/M4 CompetitionFront.png')">
+          <img src="images/M4 CompetitionBack.png" alt="Back view" onclick="changeImage('images/M4 CompetitionBack.png')">
+        </div>
+      </div>
+
+      <!-- Product Details -->
+      <div class="product-details">
+        <h1>M4 Competition Tee</h1>
+        <div class="price">
+          <span class="old-price">LE 700.00</span>
+          <span class="new-price">LE 500.00</span>
+          <span class="savings">Save LE 200.00</span>
+        </div>
+        <p class="description">
+          A premium M4 Competition inspired tee made from high-quality cotton. 
+          Perfect for motorsport fans who love speed and German engineering.
+        </p>
+
+        <!-- Size Selector -->
+        <div class="option-group">
+          <label for="size">Size:</label>
+          <select id="size" name="size">
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
+            <option>X-Large</option>
+          </select>
+        </div>
+
+        <!-- Quantity Selector -->
+        <div class="option-group">
+          <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" value="1" min="1">
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons">
+          <!-- ✅ Add to Cart -->
+          <button class="btn add-to-cart"
+            onclick="addToCartWithPopup('M4 Competition Tee', 850, 'images/M4 CompetitionBack.png')">
+            🛒 Add to Cart
+          </button>
+
+          <!-- ✅ Buy Now -->
+          <button class="btn buy-now"
+            onclick="addToCart('M4 Competition Tee', 850, 'images/M4 CompetitionBack.png', false); window.location.href='checkout.html';">
+            ⚡ Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
+      <a href="shop.html">Shop</a>
+      <a href="terms.html">Terms & Conditions</a>
+    </div>
+    <div class="socials">
+      <a href="https://www.instagram.com/revvocartees/">Instagram</a> |
+      <a href="#">Facebook</a> |
+    </div>
+    <p>&copy; 2025 CarTees. All rights reserved.</p>
+  </footer>
+
+  <!-- ✅ Corrected JS paths -->
+  <script src="js/script.js"></script>
+  <script src="js/product.js"></script>
+</body>
+</html>

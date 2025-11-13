@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CarTees | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="css/style.css"> 
+  <link rel="stylesheet" href="css/home.css"> 
+  
+  <script src="js/script.js" defer></script>
+  <script src="js/cart.js" defer></script>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo"><a href="index.html">Car<span>Tees</span></a></div>
+
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="shop.html">Shop All</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+
+    <div class="icons">
+      <div class="cart-icon" onclick="window.location.href='cart.html'">
+        🛒
+        <span id="cart-indicator"></span>
+      </div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+  <section class="hero" style="background-image: url('images/GT3 TRACK HOMEPAGE.png');">
+    <div class="hero-content">
+      <h1>Wear Your Passion</h1>
+      <p>Premium car-inspired tees for true automotive enthusiasts.</p>
+      <button onclick="window.location.href='shop.html'">Shop Now</button>
+    </div>
+  </section>
+
+  <section class="brands">
+    <h2>🏎️ Shop by Brand</h2>
+    <div class="brand-grid">
+      <article class="brand-card" onclick="window.location.href='shop.html?brand=porsche'">
+        <img src="images/Porsche Logo.png" alt="Porsche Logo">
+        <h3>Porsche</h3>
+      </article>
+      <article class="brand-card" onclick="window.location.href='shop.html?brand=ferrari'">
+        <img src="images/Ferrari Logo.png" alt="Ferrari Logo">
+        <h3>Ferrari</h3>
+      </article>
+      <article class="brand-card" onclick="window.location.href='shop.html?brand=mclaren'">
+        <img src="images/McLaren Logo.png" alt="McLaren Logo">
+        <h3>McLaren</h3>
+      </article>
+      <article class="brand-card" onclick="window.location.href='shop.html?brand=AMG'">
+        <img src="images/AMG Logo.png" alt="AMG Logo">
+        <h3>AMG</h3>
+      </article>
+      <article class="brand-card" onclick="window.location.href='shop.html?brand=BMW'">
+        <img src="images/BMW M LOGO.png" alt="BMW M Logo">
+        <h3>BMW M</h3>
+      </article>
+    </div>
+  </section>
+
+  <section class="featured">
+    <h2>🔥 Best Sellers</h2>
+    <div class="product-grid">
+      <article class="product-card">
+        <img src="images/911Front.png" alt="Porsche 911 Tee">
+        <h3>Porsche 911 Tee</h3>
+        <p>L.E 850</p>
+        <button onclick="window.location.href='product1.html'">View</button>
+      </article>
+      <article class="product-card">
+        <img src="images/SF90Front.png" alt="Ferrari SF90 Tee">
+        <h3>Ferrari SF90 Tee</h3>
+        <p>L.E 850</p>
+        <button onclick="window.location.href='product2.html'">View</button>
+      </article>
+      <article class="product-card">
+        <img src="images/P1Front.png" alt="McLaren P1 Tee">
+        <h3>McLaren P1 Tee</h3>
+        <p>L.E 850</p>
+        <button onclick="window.location.href='product3.html'">View</button>
+      </article>
+      <article class="product-card">
+        <img src="images/SennaFront.png" alt="McLaren Senna Tee">
+        <h3>McLaren Senna Tee</h3>
+        <p>L.E 850</p>
+        <button onclick="window.location.href='product4.html'">View</button>
+      </article>
+    </div>
+  </section>
+
+  <section class="reviews">
+    <h2>⭐ What Our Customers Say</h2>
+    <div class="review-cards">
+      <blockquote class="review">
+        <p>"Amazing quality tees, perfect fit and awesome car designs!"</p>
+        <cite>- Ahmed K.</cite>
+      </blockquote>
+      <blockquote class="review">
+        <p>"As a Porsche fan, I love the 911 shirt. Feels premium."</p>
+        <cite>- Maria S.</cite>
+      </blockquote>
+      <blockquote class="review">
+        <p>"Fast shipping and the McLaren tee is 🔥🔥🔥"</p>
+        <cite>- John D.</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <h2>Stay in the Fast Lane</h2>
+    <p>Subscribe for exclusive drops & offers</p>
+    <form onsubmit="event.preventDefault(); alert('✅ You’re subscribed!');">
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
+      <a href="shop.html">Shop</a>
+      <a href="terms.html">Terms & Conditions</a>
+    </div>
+    <div class="socials">
+      <a href="https://www.instagram.com/revvocartees/" target="_blank">Instagram</a> |
+      <a href="#">Facebook</a>
+    </div>
+    <p>&copy; 2025 CarTees. All rights reserved.</p>
+  </footer>
+  </body>
+</html>

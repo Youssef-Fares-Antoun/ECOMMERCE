@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout | CarTees</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/checkout.css">
+  
+  <script src="js/script.js" defer></script>
+  <script src="js/cart.js" defer></script>
+
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo"><a href="index.html">Car<span>Tees</span></a></div>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop All</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+
+    <div class="icons">
+      <div class="cart-icon" onclick="window.location.href='cart.html'">
+        🛒
+        <span id="cart-indicator"></span>
+      </div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+  <div class="container" style="display:flex; max-width: 1200px; margin: 40px auto; padding: 0 20px;">
+    <div class="checkout-form">
+      <h2>Billing Details (Egypt)</h2>
+      <form id="checkoutForm" novalidate>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" placeholder="John">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name *</label>
+            <input type="text" id="lastName" placeholder="Doe">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address *</label>
+          <input type="text" id="address" placeholder="123 Street, City">
+        </div>
+
+        <div class="form-group">
+          <label for="apartment">Apartment, Suite, etc.</label>
+          <input type="text" id="apartment" placeholder="Optional">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city">City *</label>
+            <input type="text" id="city" placeholder="Cairo">
+          </div>
+          <div class="form-group">
+            <label for="governorate">Governorate *</label>
+            <select id="governorate">
+              <option value="">-- Select Governorate --</option>
+              <option value="Cairo">Cairo</option>
+              <option value="Giza">Giza</option>
+              <option value="Alexandria">Alexandria</option>
+              <option value="Dakahlia">Dakahlia</option>
+              <option value="Red Sea">Red Sea</option>
+              <option value="Beheira">Beheira</option>
+              <option value="Fayoum">Fayoum</option>
+              <option value="Gharbia">Gharbia</option>
+              <option value="Ismailia">Ismailia</option>
+              <option value="Minya">Minya</option>
+              <option value="Luxor">Luxor</option>
+              <option value="Aswan">Aswan</option>
+              <option value="Suez">Suez</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="postalCode">Postal Code</label>
+            <input type="text" id="postalCode" placeholder="Optional">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone *</label>
+          <input type="tel" id="phone" placeholder="+20 10 1234 5678">
+        </div>
+
+        <div class="form-group">
+          <label for="payment">Payment Method *</label>
+          <select id="payment">
+            <option value="">-- Select --</option>
+            <option value="cod">Cash on Delivery</option>
+            <option value="instapay">InstaPay</option>
+          </select>
+          <div id="instapayInfo" class="instapay-details">
+            💳 Send your payment to InstaPay account:  
+            <strong>cartees@instapay</strong>  
+            and include your Order ID in the transfer note.
+          </div>
+        </div>
+
+        <button type="submit" class="checkout-btn">Place Order</button>
+      </form>
+    </div>
+
+    <div class="order-summary">
+      <h2>Your Order</h2>
+      <div id="order-items"></div>
+      <p class="order-total">Total: LE <span id="order-total">0.00</span></p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
+      <a href="shop.html">Shop</a>
+      <a href="terms.html">Terms & Conditions</a>
+    </div>
+    <div class="socials">
+      <a href="https://www.instagram.com/revvocartees/" target="_blank">Instagram</a> |
+      <a href="#">Facebook</a>
+    </div>
+    <p>&copy; 2025 CarTees. All rights reserved.</p>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const orderItems = document.getElementById("order-items");
+      const orderTotal = document.getElementById("order-total");
+      let total = 0;
+
+      if (cart.length === 0) {
+        orderItems.innerHTML = "<p>Your cart is empty.</p>";
+        orderTotal.textContent = "0.00";
+      } else {
+        cart.forEach(item => {
+          const div = document.createElement("div");
+          div.classList.add("order-item");
+          div.innerHTML = `<span>${item.quantity} × ${item.name}</span> <span>LE ${(item.price * item.quantity).toFixed(2)}</span>`;
+          orderItems.appendChild(div);
+          total += item.price * item.quantity;
+        });
+        orderTotal.textContent = total.toFixed(2);
+      }
+
+      const paymentSelect = document.getElementById("payment");
+      const instapayInfo = document.getElementById("instapayInfo");
+      paymentSelect.addEventListener("change", () => {
+        instapayInfo.style.display = paymentSelect.value === "instapay" ? "block" : "none";
+      });
+
+      // Custom validation
+      document.getElementById("checkoutForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const fields = [
+          {id: "firstName", name: "First Name"},
+          {id: "lastName", name: "Last Name"},
+          {id: "address", name: "Address"},
+          {id: "city", name: "City"},
+          {id: "governorate", name: "Governorate"},
+          {id: "phone", name: "Phone"},
+          {id: "payment", name: "Payment Method"}
+        ];
+
+        let allValid = true;
+
+        // Clear errors
+        fields.forEach(f => {
+          const el = document.getElementById(f.id);
+          el.style.borderColor = "#ccc";
+          if (el.nextElementSibling && el.nextElementSibling.classList.contains("error-msg")) {
+            el.nextElementSibling.remove();
+          }
+        });
+
+        // Validate
+        fields.forEach(f => {
+          const el = document.getElementById(f.id);
+          if (!el.value.trim()) {
+            allValid = false;
+            el.style.borderColor = "red";
+            const msg = document.createElement("div");
+            msg.className = "error-msg";
+            msg.textContent = `${f.name} is required`;
+            el.parentNode.appendChild(msg);
+          }
+        });
+
+        if (!allValid) return;
+
+        // If all valid, proceed
+        alert("✅ Order placed successfully!");
+
+        localStorage.removeItem("cart");
+        window.location.href = "index.html"; // Redirect to home
+      });
+    });
+  </script>
+
+</body>
+</html>

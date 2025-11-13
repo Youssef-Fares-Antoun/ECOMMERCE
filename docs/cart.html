@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Shopping Cart | CarTees</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cart.css">
+  
+  <script src="js/script.js" defer></script>
+  <script src="js/cart.js" defer></script>
+
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo"><a href="index.html">Car<span>Tees</span></a></div>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop All</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+
+    <div class="icons">
+      <div class="cart-icon" onclick="window.location.href='cart.html'">
+        🛒
+        <span id="cart-indicator"></span>
+      </div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+  <main style="display:block; max-width: 1000px; margin: auto;">
+    <h1>Your Cart</h1>
+    <div id="cart-items">
+        </div>
+
+    <div class="cart-summary">
+      <h2>Total: <span id="cart-total">LE 0.00</span></h2>
+      <div class="cart-actions">
+        <button class="checkout-btn" onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+        <button class="clear-btn" onclick="clearCart()">Clear Cart</button>
+        <button class="continue-btn" onclick="window.location.href='shop.html'">Continue Shopping</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
+      <a href="shop.html">Shop</a>
+      <a href="terms.html">Terms & Conditions</a>
+    </div>
+    <div class="socials">
+      <a href="https://www.instagram.com/revvocartees/" target="_blank">Instagram</a> |
+      <a href="#">Facebook</a>
+    </div>
+    <p>&copy; 2025 CarTees. All rights reserved.</p>
+  </footer>
+  <script>
+    // Specific script for cart page
+    function clearCart() {
+      localStorage.removeItem("cart");
+      displayCart(); // Re-render the empty cart
+      updateCartIndicator(); // Update the dot
+    }
+    
+    // displayCart() is already in script.js and will run on load
+  </script>
+</body>
+</html>

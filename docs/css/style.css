@@ -1,0 +1,655 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* ✅ NEW: Fluid Image Rule */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Topbar */
+.topbar {
+  background: #145214;
+  color: white;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+/* Header */
+header.navbar, /* Make sure all headers have .navbar class */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  order: 1; /* For mobile layout */
+  flex: 1;  /* For mobile layout */
+}
+
+.logo a {
+  text-decoration: none;
+  color: #222;
+}
+
+.logo span {
+  color: #145214;
+}
+
+/* Desktop Nav Links */
+nav.nav-links {
+  display: flex;
+  justify-content: center;
+  flex: 1; 
+  gap: 20px;
+}
+
+nav a {
+  margin: 0 12px;
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+}
+
+nav a.active,
+nav a:hover {
+  color: #145214;
+}
+
+/* Icons container */
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  order: 2; /* For mobile layout */
+}
+
+/* ✅ Cart Icon with Green Indicator */
+.cart-icon {
+  position: relative;
+  display: inline-block;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* cart indicator */
+#cart-indicator {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 12px;
+  height: 12px;
+  background-color: #28a745;
+  border-radius: 50%;
+  display: none;
+}
+
+#cart-indicator.active {
+  display: block;
+}
+
+/* =================== SEARCH BAR =================== */
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.search-bar {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: width 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 0;
+}
+
+.search-input {
+  width: 0;
+  opacity: 0;
+  padding: 6px 0;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.search-input.active {
+  width: 180px;
+  opacity: 1;
+  padding: 6px 10px;
+}
+
+.search-bar.show {
+  width: 240px;
+  opacity: 1;
+  padding: 5px;
+}
+
+.search-icon {
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+}
+
+
+/* ==================================
+// ✅ NEW: RESPONSIVE NAVIGATION STYLES
+// ================================== */
+
+/* Style for the hamburger icon */
+.hamburger {
+  display: none; /* Hidden by default on desktop */
+  flex-direction: column;
+  gap: 5px; /* Spacing between the bars */
+  cursor: pointer;
+  z-index: 1001;
+  order: 3; /* Make it the last item in the flex row */
+  margin-left: 15px;
+}
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Optional: Animate hamburger to 'X' */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* On screens 768px wide or less, apply these rules */
+@media (max-width: 768px) {
+
+  header.navbar, header {
+    padding: 15px 20px;
+    flex-wrap: wrap; 
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 70px; /* Adjust to match your header height (15px*2 + 40px~ font) */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background-color: #ffffff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 40px;
+    gap: 30px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    order: 99;
+    flex-basis: 100%;
+  }
+
+  .nav-links.nav-active {
+    transform: translateX(0);
+  }
+
+  .nav-links a {
+    font-size: 1.5rem; 
+  }
+  
+  .search-wrapper {
+    display: none; 
+  }
+}
+
+
+/* Hero Section */
+.hero {
+  background: url('../images/GT3%20TRACK%20SHOP.jpg') center/cover no-repeat;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); 
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1;
+  padding: 0 20px; 
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.hero-text p {
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #145214;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #0e3d0e;
+}
+
+/* Layout */
+main {
+  display: flex;
+  padding: 40px;
+  gap: 40px;
+}
+
+aside {
+  width: 250px;
+}
+
+aside h3,
+aside h4 {
+  margin-bottom: 10px;
+}
+
+aside ul {
+  list-style: none;
+}
+
+aside ul li {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+aside ul li.active,
+aside ul li:hover {
+  background: #f0f0f0;
+}
+
+.featured img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.trust-badges ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.trust-badges li {
+  margin: 6px 0;
+}
+
+/* Products Section */
+.products {
+  flex: 1;
+}
+
+.sortbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap; 
+  gap: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+  background: white;
+}
+
+.card:hover {
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+/* Button Styling */
+button,
+.card button,
+.featured button,
+.cart-modal-buttons button {
+  display: inline-block;
+  width: 100%;
+  padding: 12px 18px;
+  margin-top: 10px;
+  background: #145214;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover,
+.card button:hover,
+.featured button:hover,
+.cart-modal-buttons button:hover {
+  background: #0e3d0e;
+}
+
+/* Newsletter */
+.newsletter {
+  background: #f7f7f7;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.newsletter input {
+  padding: 12px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+.newsletter button {
+  padding: 12px 20px;
+  background: #145214;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.newsletter button:hover {
+  background: #0e3d0e;
+}
+
+/* Footer */
+footer {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 40px;
+}
+
+footer .footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; 
+  margin-bottom: 15px;
+}
+
+footer .footer-links a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer .footer-links a:hover {
+  color: #145214;
+}
+
+footer .socials {
+  margin-bottom: 15px;
+}
+
+footer .socials a {
+  color: #bbb;
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+footer .socials a:hover {
+  color: #fff;
+}
+
+/* =================== CART MODAL =================== */
+.cart-modal {
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4); 
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-modal-content {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  max-width: 400px;
+  width: 90%; 
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.cart-modal-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.cart-modal-buttons button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#viewCartBtn {
+  background: #145214;
+  color: #fff;
+}
+
+#continueShoppingBtn {
+  background: #145214;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* =================== CART PAGE & PRODUCT PAGE =================== */
+.cart-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+  gap: 20px;
+}
+
+.cart-item img {
+  width: 120px;
+  object-fit: contain;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.qty-btn {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.remove-btn {
+  padding: 5px 10px;
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.remove-btn:hover {
+  background: #c0392b;
+}
+
+.cart-summary {
+  margin-top: 30px;
+  text-align: right;
+}
+
+.cart-actions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.cart-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #145214;
+  color: #fff;
+}
+
+.cart-actions button.clear-btn {
+  background: #e74c3c;
+}
+
+.cart-actions button.continue-btn {
+  background: #3498db;
+}
+
+.cart-actions button:hover {
+  opacity: 0.9;
+}
+
+
+/* ==================================
+// ✅ NEW: GENERAL RESPONSIVE STYLES
+// ================================== */
+@media (max-width: 600px) {
+  .hero-text h1 {
+    font-size: 32px;
+  }
+  .hero-text p {
+    font-size: 16px;
+  }
+  
+  footer .footer-links {
+    flex-direction: column; 
+    gap: 15px;
+  }
+
+  .newsletter form {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .newsletter input {
+    width: 90%;
+    max-width: 300px;
+    margin-right: 0;
+  }
+  .newsletter button {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  main {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cart-item img {
+    width: 100%;
+    max-width: 200px;
+  }
+}
