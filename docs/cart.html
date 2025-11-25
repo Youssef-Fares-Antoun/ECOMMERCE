@@ -14,6 +14,16 @@
 </head>
 <body>
 
+  <div id="emptyCartModal" class="cart-modal" style="display: none;">
+    <div class="cart-modal-content">
+      <p style="font-size: 1.1rem; margin-bottom: 20px;">⚠️ Your cart is empty!<br>Please add items before checking out.</p>
+      <div class="cart-modal-buttons">
+        <button id="modalShopBtn" style="background: #145214; color: white;">Start Shopping</button>
+        <button id="modalCloseBtn" style="background: #ddd; color: #333;">Close</button>
+      </div>
+    </div>
+  </div>
+
   <header class="navbar">
     <div class="logo"><a href="index.html">Car<span>Tees</span></a></div>
 
@@ -37,6 +47,7 @@
       </div>
     </div>
   </header>
+  
   <main style="display:block; max-width: 1000px; margin: auto;">
     <h1>Your Cart</h1>
     <div id="cart-items">
@@ -45,7 +56,7 @@
     <div class="cart-summary">
       <h2>Total: <span id="cart-total">LE 0.00</span></h2>
       <div class="cart-actions">
-        <button class="checkout-btn" onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+        <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
         <button class="clear-btn" onclick="clearCart()">Clear Cart</button>
         <button class="continue-btn" onclick="window.location.href='shop.html'">Continue Shopping</button>
       </div>
@@ -61,20 +72,18 @@
       <a href="terms.html">Terms & Conditions</a>
     </div>
     <div class="socials">
-      <a href="https://www.instagram.com/revvocartees/" target="_blank">Instagram</a> |
-      <a href="#">Facebook</a>
+      <a href="https://www.instagram.com/revvocartshirts/" target="_blank">Instagram</a> |
+      <a href="https://www.facebook.com/p/RevvoCartshirts-61579528091663/" target="_blank">Facebook</a>
     </div>
     <p>&copy; 2025 CarTees. All rights reserved.</p>
   </footer>
+  
   <script>
-    // Specific script for cart page
     function clearCart() {
       localStorage.removeItem("cart");
-      displayCart(); // Re-render the empty cart
-      updateCartIndicator(); // Update the dot
+      displayCart(); 
+      updateCartIndicator(); 
     }
-    
-    // displayCart() is already in script.js and will run on load
   </script>
 </body>
 </html>
