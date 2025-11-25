@@ -10,6 +10,35 @@
   
   <script src="js/script.js" defer></script>
   <script src="js/cart.js" defer></script>
+
+  <style>
+    /* ✅ ADDED: Price styles to match Shop page */
+    .price {
+      margin-top: 8px;
+      font-size: 1em;
+    }
+    .price .old-price {
+      text-decoration: line-through;
+      color: #999;
+      margin-right: 6px;
+    }
+    .price .new-price {
+      color: green;
+      font-weight: bold;
+      margin-right: 6px;
+    }
+    .price .save-price {
+      color: red;
+      font-size: 0.9em;
+    }
+    
+    /* Ensure grid layout handles the taller price block */
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  </style>
 </head>
 <body>
 
@@ -73,38 +102,59 @@
   <section class="featured">
     <h2>🔥 Best Sellers</h2>
     <div class="product-grid">
+      
       <article class="product-card">
         <a href="product1.html">
-        <img src="images/911Front.png" alt="Porsche 911 Tee">
+        <img src="images/911Back.png" alt="Porsche 911 Tee">
         </a>
         <h3>Porsche 911 Tee</h3>
-        <p>L.E 700</p>
+        <p class="price">
+          <span class="old-price">LE 700.00</span>
+          <span class="new-price">LE 500.00</span>
+          <span class="save-price">Save LE 200.00</span>
+        </p>
         <button onclick="window.location.href='product1.html'">View</button>
       </article>
+
       <article class="product-card">
         <a href="product2.html">
-        <img src="images/SF90Front.png" alt="Ferrari SF90 Tee">
+        <img src="images/SF90Back.png" alt="Ferrari SF90 Tee">
         </a>
         <h3>Ferrari SF90 Tee</h3>
-        <p>L.E 700</p>
+        <p class="price">
+          <span class="old-price">LE 700.00</span>
+          <span class="new-price">LE 500.00</span>
+          <span class="save-price">Save LE 200.00</span>
+        </p>
         <button onclick="window.location.href='product2.html'">View</button>
       </article>
+
       <article class="product-card">
         <a href="product3.html">
-        <img src="images/P1Front.png" alt="McLaren P1 Tee">
+        <img src="images/P1Back.png" alt="McLaren P1 Tee">
         </a>
         <h3>McLaren P1 Tee</h3>
-        <p>L.E 700</p>
+        <p class="price">
+          <span class="old-price">LE 700.00</span>
+          <span class="new-price">LE 500.00</span>
+          <span class="save-price">Save LE 200.00</span>
+        </p>
         <button onclick="window.location.href='product3.html'">View</button>
       </article>
+
       <article class="product-card">
         <a href="product4.html">
-        <img src="images/SennaFront.png" alt="McLaren Senna Tee">
+        <img src="images/SennaBack.png" alt="McLaren Senna Tee">
         </a>
         <h3>McLaren Senna Tee</h3>
-        <p>L.E 700</p>
+        <p class="price">
+          <span class="old-price">LE 900.00</span>
+          <span class="new-price">LE 700.00</span>
+          <span class="save-price">Save LE 200.00</span>
+        </p>
         <button onclick="window.location.href='product4.html'">View</button>
       </article>
+
     </div>
   </section>
 
@@ -144,11 +194,10 @@
       <a href="terms.html">Terms & Conditions</a>
     </div>
     <div class="socials">
-      <a href="https://www.instagram.com/revvocartees/" target="_blank">Instagram</a> |
-      <a href="#">Facebook</a>
+      <a href="https://www.instagram.com/revvocartshirts/" target="_blank">Instagram</a> |
+      <a href="https://www.facebook.com/p/RevvoCartshirts-61579528091663/" target="_blank">Facebook</a>
     </div>
     <p>&copy; 2025 CarTees. All rights reserved.</p>
   </footer>
   </body>
 </html>
-
