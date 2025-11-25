@@ -17,8 +17,8 @@ if (cartContainer) {
     // Make sure image path is correct relative to cart.html
     let imgPath = item.image;
     if (!imgPath.startsWith('/') && !imgPath.startsWith('http')) {
-      imgPath = imgPath.replace(/^(\.\.\/)+/, ''); // Remove any '../' from relative paths
-      imgPath = 'images/' + imgPath.split('/').pop(); // Use only the filename
+      imgPath = imgPath.replace(/^(\.\.\/)+/, ''); 
+      imgPath = 'images/' + imgPath.split('/').pop(); 
     }
 
     // Set inner HTML
@@ -35,10 +35,10 @@ if (cartContainer) {
   });
 }
 
-// ✅ Update cart indicator (green dot)
+// Update cart indicator (green dot)
 function updateCartIndicator() {
   const indicator = document.getElementById("cart-indicator") || document.getElementById("cart-count");
-  if (!indicator) return; // safeguard if element missing
+  if (!indicator) return; 
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   
@@ -48,6 +48,50 @@ function updateCartIndicator() {
   } else {
     indicator.classList.remove("active");
     indicator.style.display = 'none';
+  }
+}
+
+// ✅ NEW: Logic to show the In-App Pop-up
+function proceedToCheckout() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  
+  if (cart.length === 0) {
+    // 1. Get the modal element
+    const modal = document.getElementById("emptyCartModal");
+    
+    if (modal) {
+      // 2. Show the modal (using flex to center it as per style.css)
+      modal.style.display = "flex";
+
+      // 3. Setup Close Button
+      const closeBtn = document.getElementById("modalCloseBtn");
+      if (closeBtn) {
+        closeBtn.onclick = function() {
+          modal.style.display = "none";
+        }
+      }
+
+      // 4. Setup 'Start Shopping' Button
+      const shopBtn = document.getElementById("modalShopBtn");
+      if (shopBtn) {
+        shopBtn.onclick = function() {
+          window.location.href = "shop.html";
+        }
+      }
+
+      // 5. Close if user clicks outside the box
+      window.onclick = function(event) {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      }
+    } else {
+      // Fallback just in case HTML is missing
+      alert("Your cart is empty!");
+    }
+  } else {
+    // Cart has items -> Go to checkout
+    window.location.href = 'checkout.html';
   }
 }
 
