@@ -3,9 +3,16 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
-  <title>Ferrari SF90 Tee | CarTees</title>
+  
+  <title>Porsche 911 Tee | CarTees</title> 
+  
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/product.css">
+  
+  <script src="js/script.js" defer></script>
+  <script src="js/product.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  
   <style>
     /* Price styling */
     .price {
@@ -14,7 +21,7 @@
     }
     .price .old-price {
       text-decoration: line-through;
-      color: green;
+      color: #999;
       margin-right: 10px;
     }
     .price .new-price {
@@ -30,7 +37,6 @@
 </head>
 
 <body>
-  <!-- Custom Cart Modal -->
   <div id="cartModal" class="cart-modal">
     <div class="cart-modal-content">
       <p id="cartModalMessage"></p>
@@ -41,9 +47,9 @@
     </div>
   </div>
 
-  <!-- Navbar -->
-  <header>
+  <header class="navbar">
     <div class="logo"><a href="index.html">Car<span>Tees</span></a></div>
+
     <nav class="nav-links">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop All</a>
@@ -51,35 +57,33 @@
       <a href="contact.html">Contact</a>
       <a href="faq.html">FAQ</a>
     </nav>
+
     <div class="icons">
-      <!-- Cart -->
       <div class="cart-icon" onclick="window.location.href='cart.html'">
         🛒
         <span id="cart-indicator"></span>
       </div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </header>
-
-  <!-- Product Section -->
-  <main class="product-page">
+  <main class="product-page" style="display:block;">
     <div class="product-container">
       
-      <!-- Product Images -->
       <div class="product-image">
-        <img id="mainImage" src="images/SF90Back.png" alt="Ferrari SF90 Tee">
-
-        <!-- Thumbnails -->
+        <img id="mainImage" src="images/SF90Back.png" alt="SF90 Tee">
         <div class="thumbnails">
           <img src="images/SF90Front.png" alt="Front view" onclick="changeImage('images/SF90Front.png')">
           <img src="images/SF90Back.png" alt="Back view" onclick="changeImage('images/SF90Back.png')">
         </div>
       </div>
 
-      <!-- Product Details -->
       <div class="product-details">
         <h1>Ferrari SF90 Tee</h1>
 
-        <!-- Price Display -->
         <div class="price">
           <span class="old-price">LE 700.00</span>
           <span class="new-price">LE 500.00</span>
@@ -91,7 +95,6 @@
           Perfect for motorsport fans who love performance and style.
         </p>
 
-        <!-- Size Selector -->
         <div class="option-group">
           <label for="size">Size:</label>
           <select id="size" name="size">
@@ -102,28 +105,26 @@
           </select>
         </div>
 
-        <!-- Quantity Selector -->
         <div class="option-group">
           <label for="quantity">Quantity:</label>
           <input type="number" id="quantity" value="1" min="1">
         </div>
 
-        <!-- Buttons -->
         <div class="buttons">
           <button class="btn add-to-cart"
             onclick="addToCartWithPopup('Ferrari SF90 Tee', 500, 'images/SF90Back.png')">
             🛒 Add to Cart
           </button>
-
           <button class="btn buy-now"
             onclick="addToCart('Ferrari SF90 Tee', 500, 'images/SF90Back.png', false); window.location.href='checkout.html';">
             ⚡ Buy Now
           </button>
         </div>
       </div>
+      
+      </div>
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-links">
       <a href="about.html">About Us</a>
@@ -133,34 +134,10 @@
       <a href="terms.html">Terms & Conditions</a>
     </div>
     <div class="socials">
-      <a href="https://www.instagram.com/revvocartees/">Instagram</a> |
-      <a href="#">Facebook</a> |
+      <a href="https://www.instagram.com/revvocartshirts/" target="_blank">Instagram</a> |
+      <a href="https://www.facebook.com/p/RevvoCartshirts-61579528091663/" target="_blank">Facebook</a>
     </div>
     <p>&copy; 2025 CarTees. All rights reserved.</p>
   </footer>
-
-  <script src="js/script.js"></script>
-  <script src="js/product.js"></script>
-  <script src="js/cart.js"></script>
-  <script>
-    // Toggle search
-    const searchToggle = document.getElementById("searchToggle");
-    const searchWrapper = document.getElementById("searchWrapper");
-    searchToggle.addEventListener("click", function(e) {
-      e.preventDefault();
-      searchWrapper.classList.toggle("active");
-      if (searchWrapper.classList.contains("active")) {
-        document.getElementById("searchInput").focus();
-      }
-    });
-
-    // Update cart count
-    function updateCartCount() {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      const count = cart.reduce((acc, item) => acc + item.quantity, 0);
-      document.getElementById("cart-count").textContent = count;
-    }
-    window.onload = updateCartCount;
-  </script>
-</body>
+  </body>
 </html>
